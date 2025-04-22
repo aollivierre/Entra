@@ -1,0 +1,86 @@
+# Product Requirements Document (PRD)
+## Microsoft Entra ID User Attribute Update Script
+
+### Overview
+This document outlines the requirements for developing a PowerShell script that will update user attributes in Microsoft Entra ID (formerly Azure AD) using Microsoft Graph API. The script will process user information from a CSV file and update corresponding user attributes in Entra ID.
+
+### Goals
+- Create a script compatible with PowerShell 5.1
+- Use only necessary Microsoft Graph modules for authentication and user management
+- Process user attributes from a CSV file
+- Update user attributes in Microsoft Entra ID
+- Implement simple logging functionality
+- Test functionality with a limited set of users before full deployment
+
+### Non-Goals
+- Complex optimization techniques like Graph batching
+- Elaborate logging frameworks or modules
+- Installation of the complete Microsoft Graph PowerShell SDK
+- Support for non-interactive authentication
+- Complex error recovery systems
+
+### Technical Requirements
+
+#### Platform Compatibility
+- PowerShell 5.1 or higher
+- Windows operating systems
+
+#### Dependencies
+Required Microsoft Graph PowerShell modules:
+- Microsoft.Graph.Authentication
+- Microsoft.Graph.Users
+- Microsoft.Graph.Groups
+
+#### Input
+- CSV file located in C:\Code\Temp or source temp folder (C:\Temp\users.csv)
+- CSV structure follows the provided example with columns for user attributes including:
+  - Display name
+  - User principal name
+  - First name, Last name
+  - Title, Department
+  - Location fields (City, Country, State)
+  - Other organizational attributes
+
+#### Authentication
+- Interactive authentication using username/password
+- Appropriate Microsoft Graph API scopes for reading and updating user information
+
+#### Core Functionality
+1. Import and parse CSV file containing user information
+2. Connect to Microsoft Graph API with appropriate scopes
+3. Validate user existence in Entra ID
+4. Execute a test run with 1-2 users to verify functionality
+5. Update user attributes according to CSV data
+6. Provide logging of operations and results
+
+#### Logging
+- Simple logging function that writes to console and optionally to a log file
+- Log entries should include timestamp, operation, and status
+- No complex logging frameworks required
+
+### Coding Standards
+- Follow PowerShell best practices for variable naming and syntax
+- Use PowerShell-native operators (-eq, -ne, -and, -or) for maximum compatibility
+- Avoid C-style operators that may fail in PowerShell 5.1
+- Properly handle variable references in strings (avoid syntax like "$variable: value")
+- Use ASCII-compatible characters for output formatting
+
+### Implementation Approach
+1. Module Loading: Selectively import only required Microsoft Graph modules
+2. Authentication: Connect to Microsoft Graph with interactive authentication
+3. CSV Processing: Import and parse the CSV file
+4. Test Run: Execute update for a limited set (1-2) users
+5. Full Execution: Upon validation, process remaining users
+6. Logging: Track all operations with simple logging
+
+### Success Criteria
+- Script successfully authenticates to Microsoft Graph API
+- User attributes are correctly updated in Entra ID
+- Logging provides clear visibility into the operations performed
+- Script is compatible with PowerShell 5.1
+- Executes without errors on the intended platform
+
+### Future Considerations
+- Potential for additional attribute updates as needs evolve
+- Possible non-interactive authentication options
+- Integration with existing automation workflows 
