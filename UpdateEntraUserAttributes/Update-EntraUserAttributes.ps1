@@ -274,10 +274,10 @@ Write-Log ("{0,-40} {1,-30} {2,-30}" -f "USER", "ATTRIBUTE", "CHANGES")
 Write-Log ('-' * $reportWidth)
 
 foreach ($item in $summaryReport) {
-    Write-Log ("{0,-40} {1,-30} {2,-30}" -f $item.DisplayName, "Department", "[$($item.Department_Before)] → [$($item.Department_After)]")
-    Write-Log ("{0,-40} {1,-30} {2,-30}" -f "", "Title", "[$($item.Title_Before)] → [$($item.Title_After)]")
-    Write-Log ("{0,-40} {1,-30} {2,-30}" -f "", "Fax", "[$($item.Fax_Before)] → [$($item.Fax_After)]")
-    Write-Log ("{0,-40} {1,-30} {2,-30}" -f "", "Manager", "[$($item.Manager_Before)] → [$($item.Manager_After)]")
+    Write-Log ("{0,-40} {1,-30} {2,-30}" -f $item.DisplayName, "Department", "[$($item.Department_Before)] -> [$($item.Department_After)]")
+    Write-Log ("{0,-40} {1,-30} {2,-30}" -f "", "Title", "[$($item.Title_Before)] -> [$($item.Title_After)]")
+    Write-Log ("{0,-40} {1,-30} {2,-30}" -f "", "Fax", "[$($item.Fax_Before)] -> [$($item.Fax_After)]")
+    Write-Log ("{0,-40} {1,-30} {2,-30}" -f "", "Manager", "[$($item.Manager_Before)] -> [$($item.Manager_After)]")
     Write-Log ('-' * $reportWidth)
 }
 
